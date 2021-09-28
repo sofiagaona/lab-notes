@@ -1,0 +1,85 @@
+import { useHistory } from 'react-router';
+import React, {useState, useRef} from 'react';
+import { useAuth } from '../Contextos/contexAuth.js';
+import _uniqueId from 'lodash/uniqueId';
+import { doc, updateDoc, setDoc} from "firebase/firestore";
+import { db } from "../Configuraciones/firebase";
+
+
+
+const FnSingUp = () => {
+    const {currentUser, signup } = useAuth();
+    const history = useHistory();
+    const [name, setName]= useState('');
+    const [email, setEmail]= useState('');
+    const [password, setPassword]= useState('');
+    const [verPassword, setverPassword]= useState('');
+    const [error, setError]= useState('');
+    const [loading, setLoading] = useState(false);
+    const unmounted = useRef(false);
+    const [id] = useState(_uniqueId('prefix-89'));
+    
+    
+    /*useEffect(() => {
+      return () => { unmounted.current = true }
+    }, []);*/
+    const setData = async (idUser)=>{
+        const notes = doc(db, "user", idUser);
+        await setDoc(notes, {
+        note:{    
+        [id] : {
+            title:"",
+            note:"",
+        }
+     }
+      });
+     }
+   
+    const formSingup = async (e) => {
+        e.preventDefault()
+        setLoading(true);
+       
+       if(password===verPassword){
+        try { 
+            const users=await signup(email, password)
+            const idUser = users.user.uid;
+            setData(idUser);
+            history.push('/note');
+        }
+        catch(error){
+            setError(error);
+        }
+       }
+       else{
+           setError('Verifique que las  contraseña sean iguales')
+       }
+      
+       if (!unmounted) {
+       setLoading(false);
+    }
+    }
+    return(
+        <div className = 'box-singup'>
+            <section>
+               <h1 className= 'txt-register'>Registro</h1>
+                <div className='line-singup'></div>
+            </section>
+            <section className= 'box-form'>
+                  <form className='form-singup' onSubmit={formSingup}>
+                      <label>Nombre:</label>
+                      <input type='text' required onChange={(ev)=>setName(ev.target.value)}></input>
+                      <label>Correo:</label>
+                      <input type='email' required onChange={(ev)=>setEmail(ev.target.value)}></input>
+                      <label>Contraseña:</label>
+                      <input type='password' required onChange={(ev)=>setPassword(ev.target.value)}></input>
+                      <label>Confirmar contraseña:</label>
+                      <input type='password' required onChange={(ev)=>setverPassword(ev.target.value)}></input>
+                      <div className='box-btn-singup'><button className='btn-Singup'>Registrarte</button></div>
+                  </form>
+              </section>
+              {error&&<p className='txtError'>{error}</p>}
+        </div>
+    )
+
+}
+export default FnSingUp
