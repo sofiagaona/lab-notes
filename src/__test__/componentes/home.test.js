@@ -9,7 +9,7 @@ describe('<Home/>', ()=>{
   
   const home = mount(<Home/>);
   console.log(home.debug())
-  test('Render el componente archivo',()=>{
+  test('Render el componente Home',()=>{
       expect(home.length).toEqual(1);
     });
   test('Render del titulo',()=>{
