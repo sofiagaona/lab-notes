@@ -9,11 +9,11 @@ import Archivo from './Archivo';
 
 
 const Note = ()=>{
-    const { currentUser, logout, isLogged } = useAuth();
+    const { currentUser, logout } = useAuth();
     const history =useHistory();
     const [error, SetError] = useState('');
     const [click, setClick]=useState(0);
-    const [user, setUser]=useState({});
+    
     
    //console.log(currentUser);
 

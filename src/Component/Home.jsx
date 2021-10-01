@@ -29,7 +29,7 @@ const Home = ()=>{
         <section>
             <div className='box-flex-login'>
                 <div className = 'box-login'>
-                 <p className = 'title-login'>Login</p>
+                 <h1 className = 'title-login'>Login</h1>
                  <div className = 'line'></div>
                  <p className = 'text-register'>¿Aún no tienes cuenta? <Link to='/singup'>Registrate</Link></p>
                  <form className = 'form-login'onSubmit={FnLogin}>
