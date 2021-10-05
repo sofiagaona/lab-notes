@@ -4,7 +4,6 @@ import { mount, shallow } from 'enzyme';
 import { render, cleanup, fireEvent } from '@testing-library/react';
 import '@testing-library/jest-dom/extend-expect';
 import Home from "../../Component/Home";
-
 import {login} from "../../Contextos/contexAuth";
 
 

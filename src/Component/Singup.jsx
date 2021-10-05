@@ -67,13 +67,13 @@ const FnSingUp = () => {
             <section className= 'box-form'>
                   <form className='form-singup' onSubmit={formSingup}>
                       <label>Nombre:</label>
-                      <input type='text' required onChange={(ev)=>setName(ev.target.value)}></input>
+                      <input type='text' id ='input-name' value={name} required onChange={(ev)=>setName(ev.target.value)}></input>
                       <label>Correo:</label>
-                      <input type='email' required onChange={(ev)=>setEmail(ev.target.value)}></input>
+                      <input type='email'id ='input-email' value={email} required onChange={(ev)=>setEmail(ev.target.value)}></input>
                       <label>Contraseña:</label>
-                      <input type='password' required onChange={(ev)=>setPassword(ev.target.value)}></input>
+                      <input type='password' id ='input-password' value={password} required onChange={(ev)=>setPassword(ev.target.value)}></input>
                       <label>Confirmar contraseña:</label>
-                      <input type='password' required onChange={(ev)=>setverPassword(ev.target.value)}></input>
+                      <input type='password' id ='input-verPassword' value={verPassword} required onChange={(ev)=>setverPassword(ev.target.value)}></input>
                       <div className='box-btn-singup'><button className='btn-Singup'>Registrarte</button></div>
                   </form>
               </section>
