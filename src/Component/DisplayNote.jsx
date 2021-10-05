@@ -8,6 +8,7 @@ import ModalReact from './Modal';
 const DisplayNote =(props) => {
    const [notes, setNotes]= useState([]);
    const [isVisible, setIsvisible]=useState(false);
+   const [idNote, setIdNote]= useState('');
    //const newNote={title:'', note:''};
    const collection = props.collection;
    const idUser = props.id;
@@ -28,23 +29,28 @@ const DisplayNote =(props) => {
 
     const fnshowModal = () =>{setIsvisible(true)}
     const fnhandelModal = () =>{setIsvisible(false)}
+    const newnote = { title: '', note: '', id:'' }
    
 return(
     <section>
+        <div className="box-bttn">
+           <button className="add-Bttn" onClick={fnshowModal}>Nueva Nota
+              {isVisible &&
+                <ModalReact mode='create' isVisible= {isVisible} notes={newnote} heandleModal={fnhandelModal} idDoc={props.id}/>
+              } 
+           </button> 
+        </div> 
     <div>
     {
           notes.map((note) => (
-           <CointeinerNot note={note[2]} title={note[1]} id={note[0]}/>
+              
+           <CointeinerNot note={note[2]} title={note[1]} id={note[0]} idUser={props.id}/>
            
           ))
         }
 
     </div>
-    <button className="add-Bttn" onClick={fnshowModal}>+
-     {isVisible &&
-         <ModalReact mode='create' isVisible= {isVisible} note={notes} heandleModal={fnhandelModal} idDoc={props.id}/>
-     } 
-     </button>   
+    
     </section>
 )
 }

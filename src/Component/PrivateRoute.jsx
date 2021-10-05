@@ -7,7 +7,9 @@ import { useAuth } from '../Contextos/contexAuth';
 export const PrivateRoute = ({component:Component, ...rest}) => {
   const { currentUser } = useAuth();
   const [user, setUser] = useState(false);
+  
   if (Object.keys(currentUser).length === 0){
+   
     console.log('esta vacio');
   }
   //console.log(currentUser);

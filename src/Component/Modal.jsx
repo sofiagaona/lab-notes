@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import ReactModal from 'react-modal';
 import _uniqueId from 'lodash/uniqueId';
-import { doc, updateDoc} from "firebase/firestore";
+import { doc, updateDoc, getDoc} from "firebase/firestore";
 import { db } from "../Configuraciones/firebase";
 
 const customStyles = {
@@ -12,14 +12,17 @@ const customStyles = {
     bottom: 'auto',
     marginRight: '-50%',
     transform: 'translate(-50%, -50%)',
+    boxShadow: '5px 5px 10px black',
+    border: 'none'
     
   },
 };
-const ModalReact = ({mode, isVisible, notes, heandleModal, idDoc} )=>{
-//const {title,note}=notes
+const ModalReact = ({mode, isVisible, notes, heandleModal, idDoc, idUser} )=>{
+    
+const { title, note } = notes; 
 const [idNote] = useState(_uniqueId('prefix-89'));
-const [newTitle, setNewtitle]=useState('');
-const [newNote, setNewnote]=useState('');
+const [newTitle, setNewtitle]=useState(title);
+const [newNote, setNewnote]=useState(note);
 const [open, setOpen]=useState(isVisible);
 const heandleTitle = (ev) =>{setNewtitle(ev.target.value)}
 const heandleNote = (ev) =>{setNewnote(ev.target.value)}
@@ -27,6 +30,7 @@ const fnClose = () => {
     setOpen(false);
     heandleModal()
 }
+
 
 const fnheandleSubmit=(e)=>{
 e.preventDefault();
@@ -39,7 +43,7 @@ else{
 fnClose()
 }
 const fnUpdateNote = async ()=>{
-    const notes = doc(db, "user", idDoc);
+    const notes = doc(db, "user", idUser);
     await updateDoc(notes, {
    [`note.${idDoc}.title`]: newTitle,
    [`note.${idDoc}.note`]: newNote
@@ -59,16 +63,18 @@ const fnUpdateNote = async ()=>{
 
 return(
     <ReactModal isOpen={open} style={customStyles}>
-        <form action="" onSubmit={fnheandleSubmit}>
-         <button className='closeButton' onClick={fnClose}>X</button>
+        <div className="box-modal">
+        <form className="modal" action="" onSubmit={fnheandleSubmit}>
+         <div className="box-btn-close"><button className='closeButton' onClick={fnClose}>X</button></div>
          <input type="text" value={newTitle} onChange={heandleTitle} placeholder="Titulo"/>
          <textarea type="text" value={newNote} onChange={heandleNote} placeholder="Escibe una nota"></textarea>
          {
              mode==='edit'?
-             <button type='submit' className="btn-edit" >Editar Nota</button>:
-             <button type='submit' className="btn-create">Crear nota</button>
+             <div className="box-btn-create"><button type='submit' className="btn-create" >Editar Nota</button></div> :
+             <div className="box-btn-create"><button type='submit' className="btn-create">Crear nota</button></div>
          }
         </form>
+        </div>
 
     </ReactModal>
 )

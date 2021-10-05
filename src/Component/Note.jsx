@@ -35,24 +35,26 @@ const Note = ()=>{
     //<p>{currentUser}</p>
     return(
         <section>
-         <p>{currentUser.uid}</p>
-        <div className='box-menu'>
-        <div><button className='btn-menu' onClick={()=>{setClick(1)}}>Nota</button></div>
-        <div><button className='btn-menu' onClick={()=>{setClick(2)}}>Archivar</button></div>
-        <div><button className='btn-menu' onClick={()=>{setClick(3)}}>Papelera</button></div>
-       <div><button className='btn-menu' onClick={fnLogOut}>Log-Out</button></div>
-       {error&& <p>error</p>}
-       <div>
-       {click===1 ? (<MakeNote  id={currentUser}/>) : 
-       click===2 ? (<Archivo/>):
-       click===3?
-        <h1>Adios</h1>:
-        <h1>Naada</h1>
-      }
-       </div>
-       </div>
-      
-       </section>
+          <p>{currentUser.uid}</p>
+          
+          <div className='box-grid'>
+            <div className="secc-Nav">   
+             <div><button className='btn-menu' onClick={()=>{setClick(1)}}>Nota</button></div>
+             <div><button className='btn-menu' onClick={()=>{setClick(2)}}>Archivar</button></div>
+             <div><button className='btn-menu' onClick={fnLogOut}>Log-Out</button></div>
+             {error&& <p>error</p>}
+           </div>
+            <div className='line-ver'></div>
+            <div className="secc-Conteiner">
+              {click===1 ? (<MakeNote  id={currentUser}/>) : 
+               click===2 ? (<Archivo/>):
+               click===3?
+               <h1>Adios</h1>:
+                <h1>Naada</h1>
+              }
+            </div>
+          </div>
+        </section>
        
     )
 }

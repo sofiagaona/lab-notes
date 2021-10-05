@@ -41,7 +41,6 @@ const MakeNote = (props)=>{
     
     return (
         <section>
-        <h1>Hacer Nota</h1>
         
         <DisplayNote id={props.id} collection='user'/> 
         </section>
