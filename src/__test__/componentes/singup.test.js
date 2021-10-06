@@ -32,7 +32,7 @@ jest.mock('../../Contextos/contexAuth', () => {
         expect(singup.container).toHaveTextContent('Registro');
     });
   
-    test ('verificar entrada de nombre en input ',()=>{
+    test ('verificar entrada de nombre en input',()=>{
         const singup= mount(<Router><FnSingUp/></Router>);
         const inputName= simulateChangeOnInput(singup,'input#input-name','Test');
         const inputEmail= simulateChangeOnInput(singup,'input#input-email','test@test.com');
@@ -45,13 +45,7 @@ jest.mock('../../Contextos/contexAuth', () => {
         expect(inputVerifPassword.props().value).toEqual('123456');
     })
 
-    test('submit de form',()=>{
-        const singup= mount(<Router><FnSingUp/></Router>);
-        const inputName= simulateChangeOnInput(singup,'input#input-name','Test');
-        const inputEmail= simulateChangeOnInput(singup,'input#input-email','test@test.com');
-        const inputPassword= simulateChangeOnInput(singup,'input#input-name','123456');
-        const inputVerifPassword= simulateChangeOnInput(singup,'input#input-name','123456');
-
-        singup.find('form').simulate('submit', {preventDefault:()=>{},})
+    test('verificar registro de usario en firebase',()=>{
+       
     })
   })

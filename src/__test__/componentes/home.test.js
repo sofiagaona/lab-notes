@@ -52,6 +52,7 @@ describe('<Home/>', ()=>{
   test('click del botón comenzar',()=>{
     const mockFnLogin=jest.fn();
     const home = render(<Router><Home/></Router>);
+    console.log(home.debug());
     const formLogin = home.getByTestId('form-login');
     fireEvent.submit(formLogin);
     expect(mockFnLogin).toHaveBeenCalledTimes(1);
