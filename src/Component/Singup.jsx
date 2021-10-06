@@ -38,7 +38,7 @@ const FnSingUp = () => {
     const formSingup = async (e) => {
         e.preventDefault()
         setLoading(true);
-       
+
        if(password===verPassword){
         try { 
             const users=await signup(email, password)
