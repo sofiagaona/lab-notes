@@ -1,7 +1,7 @@
 import React from "react"
 const Archivo = ()=>{
  return(
-     <h1>Archivar nota</h1>
+     <h1>Archivar nota actualizar</h1>
      
  )
 }
