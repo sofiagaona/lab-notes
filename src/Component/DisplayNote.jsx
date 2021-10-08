@@ -2,12 +2,17 @@ import React, {useState, useEffect} from 'react';
 import { doc, onSnapshot } from "firebase/firestore";
 import { db } from "../Configuraciones/firebase";
 import CointeinerNot from './cointeinerNote';
+import ModalReact from './Modal';
 
 
 const DisplayNote =(props) => {
    const [notes, setNotes]= useState([]);
+   const [isVisible, setIsvisible]=useState(false);
+   const [idNote, setIdNote]= useState('');
+   //const newNote={title:'', note:''};
    const collection = props.collection;
    const idUser = props.id;
+
        useEffect(()=>{
     
         onSnapshot(doc(db, collection, idUser), (snap) => {
@@ -21,18 +26,31 @@ const DisplayNote =(props) => {
            setNotes(document);
            });
     },[]);
+
+    const fnshowModal = () =>{setIsvisible(true)}
+    const fnhandelModal = () =>{setIsvisible(false)}
+    const newnote = { title: '', note: '', id:'' }
    
 return(
     <section>
+        <div className="box-bttn">
+           <button className="add-Bttn" onClick={fnshowModal}>Nueva Nota
+              {isVisible &&
+                <ModalReact mode='create' isVisible= {isVisible} notes={newnote} heandleModal={fnhandelModal} idDoc={props.id}/>
+              } 
+           </button> 
+        </div> 
     <div>
     {
           notes.map((note) => (
-            <CointeinerNot note={note[2]} title={note[1]} id={note[0]}/>
+              
+           <CointeinerNot note={note[2]} title={note[1]} id={note[0]} idUser={props.id}/>
+           
           ))
         }
 
     </div>
-         
+    
     </section>
 )
 }

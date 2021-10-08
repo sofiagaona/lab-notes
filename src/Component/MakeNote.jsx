@@ -8,7 +8,7 @@ import DisplayNote from './DisplayNote';
 
 
 const MakeNote = (props)=>{
-    const [id] = useState(_uniqueId('prefix-89'));
+   /* const [id] = useState(_uniqueId('prefix-89'));
     console.log(props)
     const [newtitle, setNewTitle] = useState('');
     const [newnote, setNewNote] = useState('');
@@ -37,18 +37,11 @@ const MakeNote = (props)=>{
      }
      useEffect(()=>{
         upDateData()
-    },[])
+    },[])*/
     
     return (
         <section>
-        <h1>Hacer Nota</h1>
-        <div>
-           <label>Titulo</label>
-           <input type='text' value={newtitle} onChange={fnTitle} required ></input>
-           <label>Contenido</label>
-           <input type="text" value={newnote} onChange={fnNote} required/>
-           <button onClick={fnSendReset} >Enviar</button>
-        </div>  
+        
         <DisplayNote id={props.id} collection='user'/> 
         </section>
     )
