@@ -1,15 +1,14 @@
-import React, {useState} from "react";
+import React, {useState, useRef} from "react";
 import ModalReact from "./Modal";
 import { doc, updateDoc, deleteField } from "firebase/firestore";
 import { db } from "../Configuraciones/firebase";
-
+import {AiFillPicture} from 'react-icons/ai'
+import {handleFileChange} from '../firebaseStorage/firebaseStorage'
 const CointeinerNot = (props)=>{
 
-  console.log(props.note);
-  console.log(props.title);
-  console.log(props.id);
-  console.log(props.idUser);
+ 
   const [isVisible, setIsvisible]=useState(false);
+  const fileInput = useRef(null);
   const fnshowModal = () =>{setIsvisible(true)}
   const fnhandelModal = () =>{setIsvisible(false)}
 
@@ -18,8 +17,13 @@ const CointeinerNot = (props)=>{
      await updateDoc(noteRef, {
       [`note.${props.id}`]: deleteField()
 });
-
   }
+
+   const handleClick = () => {
+    fileInput.current.click()
+  }
+  
+  
    return(
    <section>
     
@@ -35,7 +39,14 @@ const CointeinerNot = (props)=>{
              <div className="box-conteiner-btn">
                <button className="btn-note" id={props.id} onClick={fnDelete}>Eliminar</button>
                <button className="btn-note" id={props.id} onClick={fnshowModal}>Editar</button>
-               <button className="btn-note" id={props.id}>Archivar</button>
+               <div className="patientactions-container">
+            <input
+                type="file"
+                onChange={(e) => handleFileChange(e)}
+                ref={fileInput} 
+            />
+            <div onClick={()=> handleClick()}></div>
+        </div>
              </div>
            </div>
         </section>

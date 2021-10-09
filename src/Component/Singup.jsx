@@ -1,16 +1,18 @@
 import { useHistory } from 'react-router';
-import React, {useState, useRef} from 'react';
+import React, {useState, useRef, useEffect} from 'react';
 import { useAuth } from '../Contextos/contexAuth.js';
 import _uniqueId from 'lodash/uniqueId';
 import { doc, updateDoc, setDoc} from "firebase/firestore";
 import { db } from "../Configuraciones/firebase";
+//import { getStorageValue } from '../Hook/useLocal Storage';
+
 
 
 
 const FnSingUp = () => {
     const {currentUser, signup } = useAuth();
     const history = useHistory();
-    const [name, setName]= useState('');
+    const [name, setName] = useState('');
     const [email, setEmail]= useState('');
     const [password, setPassword]= useState('');
     const [verPassword, setverPassword]= useState('');
@@ -19,10 +21,11 @@ const FnSingUp = () => {
     const unmounted = useRef(false);
     const [id] = useState(_uniqueId('prefix-89'));
     
+    useEffect(() => {
+        localStorage.setItem("name", JSON.stringify(name));
+      }, [name]);
+
     
-    /*useEffect(() => {
-      return () => { unmounted.current = true }
-    }, []);*/
     const setData = async (idUser)=>{
         const notes = doc(db, "user", idUser);
         await setDoc(notes, {
@@ -58,6 +61,7 @@ const FnSingUp = () => {
        setLoading(false);
     }
     }
+  
     return(
         <div className = 'box-singup'>
             <section>
@@ -74,7 +78,7 @@ const FnSingUp = () => {
                       <input type='password' id ='input-password' value={password} required onChange={(ev)=>setPassword(ev.target.value)}></input>
                       <label>Confirmar contraseña:</label>
                       <input type='password' id ='input-verPassword' value={verPassword} required onChange={(ev)=>setverPassword(ev.target.value)}></input>
-                      <div className='box-btn-singup'><button className='btn-Singup'>Registrarte</button></div>
+                      <div className='box-btn-singup'><button className='btn-Singup' >Registrarte</button></div>
                   </form>
               </section>
               {error&&<p className='txtError'>{error}</p>}

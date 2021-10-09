@@ -1,6 +1,8 @@
+import { updateCurrentUser } from '@firebase/auth';
 import React, {useState,useEffect} from 'react';
 import { Link, useHistory } from 'react-router-dom'
 import { useAuth } from '../Contextos/contexAuth'
+import { useLocalStorage } from '../Hook/useLocal Storage';
 
 const Home = ()=>{
     const { login } = useAuth();

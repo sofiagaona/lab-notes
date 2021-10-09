@@ -1,8 +1,9 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import ReactModal from 'react-modal';
 import _uniqueId from 'lodash/uniqueId';
 import { doc, updateDoc, getDoc} from "firebase/firestore";
 import { db } from "../Configuraciones/firebase";
+import { getStorageValue } from '../Hook/useLocal Storage';
 
 const customStyles = {
   content: {
@@ -21,8 +22,8 @@ const ModalReact = ({mode, isVisible, notes, heandleModal, idDoc, idUser} )=>{
     
 const { title, note } = notes; 
 const [idNote] = useState(_uniqueId('prefix-89'));
-const [newTitle, setNewtitle]=useState(title);
-const [newNote, setNewnote]=useState(note);
+const [newTitle, setNewtitle]=useState(getStorageValue("newTitle",title));
+const [newNote, setNewnote]=useState(getStorageValue("newNote",note));
 const [open, setOpen]=useState(isVisible);
 const heandleTitle = (ev) =>{setNewtitle(ev.target.value)}
 const heandleNote = (ev) =>{setNewnote(ev.target.value)}
@@ -30,7 +31,15 @@ const fnClose = () => {
     setOpen(false);
     heandleModal()
 }
+useEffect(() => {
+    localStorage.setItem("newTitle", JSON.stringify(newTitle));
+  }, [newTitle]);
 
+useEffect(() => {
+    localStorage.setItem("newNote", JSON.stringify(newNote));
+  }, [newNote]);
+
+ 
 
 const fnheandleSubmit=(e)=>{
 e.preventDefault();
@@ -60,6 +69,10 @@ const fnUpdateNote = async ()=>{
   });
  }
 
+ const removeItem = ()=>{
+   localStorage.clear()
+ }
+
 
 return(
     <ReactModal isOpen={open} style={customStyles}>
@@ -70,8 +83,8 @@ return(
          <textarea type="text" value={newNote} onChange={heandleNote} placeholder="Escibe una nota"></textarea>
          {
              mode==='edit'?
-             <div className="box-btn-create"><button type='submit' className="btn-create" >Editar Nota</button></div> :
-             <div className="box-btn-create"><button type='submit' className="btn-create">Crear nota</button></div>
+             <div className="box-btn-create"><button type='submit' className="btn-create"  onClick={removeItem}>Editar Nota</button></div> :
+             <div className="box-btn-create"><button type='submit' className="btn-create" onClick={removeItem}>Crear nota</button></div>
          }
         </form>
         </div>
