@@ -4,6 +4,8 @@ import { doc, updateDoc, deleteField } from "firebase/firestore";
 import { db } from "../Configuraciones/firebase";
 import {AiFillPicture} from 'react-icons/ai'
 import {handleFileChange} from '../firebaseStorage/firebaseStorage'
+//import FnSpotify from "../Apis/spotify";
+
 const CointeinerNot = (props)=>{
 
  
@@ -46,7 +48,7 @@ const CointeinerNot = (props)=>{
                 ref={fileInput} 
             />
             <div onClick={()=> handleClick()}></div>
-        </div>
+   </div>
              </div>
            </div>
         </section>

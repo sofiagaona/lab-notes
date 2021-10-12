@@ -2,7 +2,8 @@ import { updateCurrentUser } from '@firebase/auth';
 import React, {useState,useEffect} from 'react';
 import { Link, useHistory } from 'react-router-dom'
 import { useAuth } from '../Contextos/contexAuth'
-import { useLocalStorage } from '../Hook/useLocal Storage';
+
+
 
 const Home = ()=>{
     const { login } = useAuth();
@@ -27,7 +28,6 @@ const Home = ()=>{
 
     return(
         <section>
-        <div className='box-clcle-pink'><div className="circle-pink"><p className='logo'>N</p></div></div>
         <section>
             <div className='box-flex-login'>
                 <div className = 'box-login'>
@@ -35,12 +35,14 @@ const Home = ()=>{
                  <div className = 'line'></div>
                  <p className = 'text-register'>¿Aún no tienes cuenta? <Link to='/singup'>Registrate</Link></p>
                  <form className = 'form-login' data-testid="form-login" onSubmit={FnLogin}>
-                     <label>Correo:</label>
+                     <div className='box-email-password'>
+                     <label>Correo</label>
                      <input type="email" id = "sign_up_email" required onChange={fnEmail}></input>
-                     <label>Contraseña:</label>
+                     <label>Contraseña</label>
                      <input type="password" id = "sign_up_password" required onChange={fnPassword}></input>
+                     </div>
                      <button type="submit" className ='btn-login'>Comienza</button>
-                     <button type="submit" className ='btn-login-google'>Google</button>
+                     {/*<button type="submit" className ='btn-login-google'>Google</button>*/}
                  </form>
                  {error&& <p>error</p>}
                 </div>

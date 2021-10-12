@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { auth } from '../Configuraciones/firebase';
-import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, onAuthStateChanged } from "firebase/auth";
+import { getAuth,setPersistence,browserLocalPersistence, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, onAuthStateChanged } from "firebase/auth";
 
 const AuthContext = React.createContext();
 export const useAuth = () => useContext(AuthContext);
@@ -20,7 +20,22 @@ export const AuthProvider = (props) => {
     }
     const login = (email, password) => {
         const auth = getAuth();
-       return signInWithEmailAndPassword(auth, email, password)
+setPersistence(auth, browserLocalPersistence)
+  .then(() => {
+    // Existing and future Auth states are now persisted in the current
+    // session only. Closing the window would clear any existing state even
+    // if a user forgets to sign out.
+    // ...
+    // New sign-in will be persisted with session persistence.
+    return signInWithEmailAndPassword(auth, email, password);
+  })
+  .catch((error) => {
+    // Handle Errors here.
+    const errorCode = error.code;
+    const errorMessage = error.message;
+  });
+        //const auth = getAuth();
+       //return signInWithEmailAndPassword(auth, email, password)
     }
     const logout = () => {
         const auth = getAuth();
