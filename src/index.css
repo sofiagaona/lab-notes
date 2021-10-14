@@ -291,6 +291,13 @@ border-style: none;
 }
 /*COMPONENTE NOTA*/
 
+.bienvenida{
+  font-size: 2em;
+  color: #385e8b;;
+  font-weight: bold;
+  text-align: justify;
+  margin-left: 20%;
+}
 .box-grid{
   display: grid;
   margin: 0 auto;
@@ -318,12 +325,12 @@ border-style: none;
   .box-clcle-yellow-note{
     display: flex;
     align-items:center;
-    margin-top: -40%;
+    margin-top: -30%;
     margin-left: 5%;
   }
   .circle-yellow-note{
-    width: 1.5em;
-    height: 1.5em;
+    width: 1em;
+    height: 1em;
     -moz-border-radius: 50%;
     -webkit-border-radius: 50%;
     border-radius: 50%;
@@ -332,12 +339,12 @@ border-style: none;
   .box-clcle-blue-note{
     display: flex;
     align-items:center;
-    margin-top: -35%;
-    margin-left: 35%;
+    margin-top: -25%;
+    margin-left: 30%;
   }
   .circle-blue-note{
-    width: 1.5em;
-    height: 1.5em;
+    width: 1em;
+    height: 1em;
     -moz-border-radius: 50%;
     -webkit-border-radius: 50%;
     border-radius: 50%;
@@ -346,12 +353,12 @@ border-style: none;
   .box-clcle-purple-note{
     display: flex;
     align-items:center;
-    margin-top: -25%;
+    margin-top: -15%;
    margin-left: 25%;
   }
   .circle-purple-note{
-    width: 1em;
-    height: 1em;
+    width: .7em;
+    height: .7em;
     -moz-border-radius: 50%;
     -webkit-border-radius: 50%;
     border-radius: 50%;
@@ -361,7 +368,7 @@ border-style: none;
     display: flex;
     align-items:center;
     margin-top: 5%;
-    margin-left: 50%;
+    margin-left: 43%;
   }
   .parrafo-note{
     font-size: .5em;
@@ -406,13 +413,13 @@ border-style: none;
   width: 80%;
   margin-top: 20%;
   color:  #54478C;
-  font-size: 1em;
+  font-size: 1.5em;
   font-weight: 500;
   text-align: justify;
   background: #fff; 
   border: 2px solid  #54478C;
   border-radius: 0px 50px 50px 0px;
-  padding: .5em .5em;
+  padding: .5em 1em .5em 1em ;
  
   position: relative;
  
@@ -421,7 +428,7 @@ border-style: none;
   
 }
 .btn-menu:hover {
-  background:  #54478C;;
+  background:  rgba(84, 71, 140, 0.7);
   color: #fff ;
  
 }
@@ -440,21 +447,21 @@ border-style: none;
 }
 .box-bttn{
   display: flex;
-  justify-content:flex-end;
+  justify-content:center;
   
 }
 .add-Bttn{
-  width: 30%;
+  width: 40%;
   margin-top: 10%;
   margin-right: 20%;
-  color: white;
-  font-size: 1em;
-  font-weight: 500;
+  color: #385e8b;
+  font-size: 1.5em;
+  font-weight: bold;
   text-align: center;
   background: rgba(4, 139, 168, 0.7); 
   border: 2px solid rgba(4, 139, 168, 0.7);
   border-radius: 10px;
-  padding: .5em .5em;
+  padding: .5em 0em .5em 0em;
 }
 .add-Bttn:hover {
   background: #fff;
@@ -466,16 +473,30 @@ border-style: none;
   flex-direction: column;
 }
 .conteiner-note{
-box-sizing: border-box;
+
 width: 80%;
 border: .3em solid #54478C;
 padding: 5px;
-margin-top: 3%;
+margin-top: 5%;
 }
 .box-title-not{
   display: flex;
   flex-direction: column;
 }
+.title-conteiner{
+  font-size: 1.5em;
+  color: #464647;
+  font-weight: bold;
+}
+.titleNote{
+  font-size: .8em;
+  color: #747477;
+ }
+ .note-conteiner{
+  font-size: 1.5em;
+  color: #747477;
+  margin-bottom: 2em;
+ }
 .box-conteiner-btn{
   display: flex;
   flex-direction: row;
@@ -483,14 +504,16 @@ margin-top: 3%;
 }
 .btn-note{
   margin-right: 3%;
-  width: 20%;
-  color: white;
-  font-size: .8em;
+  width: 40%;
+  color: #385e8b;
+  font-size: 1.3em;
+  font-weight: bold;
   text-align: center;
   background: rgba(4, 139, 168, 0.7); 
   border: 1px solid rgba(4, 139, 168, 0.7);
   border-radius: 5px;
-  padding: .5em;
+  padding: .3em .5em .3em .5em;
+
   
 }
 .btn-note:hover {

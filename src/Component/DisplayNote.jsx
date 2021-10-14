@@ -3,6 +3,7 @@ import { doc, onSnapshot } from "firebase/firestore";
 import { db } from "../Configuraciones/firebase";
 import CointeinerNot from './cointeinerNote';
 import ModalReact from './Modal';
+import {IoIosCreate} from 'react-icons/io';
 
 
 const DisplayNote =(props) => {
@@ -34,7 +35,7 @@ const DisplayNote =(props) => {
 return(
     <section>
         <div className="box-bttn">
-           <button className="add-Bttn" onClick={fnshowModal}>Nueva Nota
+           <button className="add-Bttn" onClick={fnshowModal}><IoIosCreate/>Nueva Nota
               {isVisible &&
                 <ModalReact mode='create' isVisible= {isVisible} notes={newnote} heandleModal={fnhandelModal} idDoc={props.id}/>
               } 

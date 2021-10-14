@@ -2,7 +2,8 @@ import React, {useState, useRef} from "react";
 import ModalReact from "./Modal";
 import { doc, updateDoc, deleteField } from "firebase/firestore";
 import { db } from "../Configuraciones/firebase";
-import {AiFillPicture} from 'react-icons/ai'
+import {AiTwotoneDelete} from 'react-icons/ai';
+import {AiTwotoneEdit} from 'react-icons/ai';
 import {handleFileChange} from '../firebaseStorage/firebaseStorage'
 //import FnSpotify from "../Apis/spotify";
 
@@ -35,20 +36,20 @@ const CointeinerNot = (props)=>{
         <section className="box-conteiner">
            <div className="conteiner-note">
             <div className="box-title-not">
-               <p>Titulo: <span> {props.title} </span></p>
-               <p>{props.note}</p>
+               <p className='title-conteiner'>Titulo: <span classname='titleNote'> {props.title} </span></p>
+               <p className='note-conteiner'>{props.note}</p>
              </div>
              <div className="box-conteiner-btn">
-               <button className="btn-note" id={props.id} onClick={fnDelete}>Eliminar</button>
-               <button className="btn-note" id={props.id} onClick={fnshowModal}>Editar</button>
-               <div className="patientactions-container">
+               <button className="btn-note" id={props.id} onClick={fnDelete}><AiTwotoneDelete/>Eliminar</button>
+               <button className="btn-note" id={props.id} onClick={fnshowModal}><AiTwotoneEdit/>Editar</button>
+               {/*<div className="patientactions-container">
             <input
                 type="file"
                 onChange={(e) => handleFileChange(e)}
                 ref={fileInput} 
             />
             <div onClick={()=> handleClick()}></div>
-   </div>
+   </div>*/}
              </div>
            </div>
         </section>

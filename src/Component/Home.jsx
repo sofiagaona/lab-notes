@@ -1,30 +1,38 @@
 import { updateCurrentUser } from '@firebase/auth';
-import React, {useState,useEffect} from 'react';
+import React, {useState} from 'react';
 import { Link, useHistory } from 'react-router-dom'
 import { useAuth } from '../Contextos/contexAuth'
 
 
 
+
+
 const Home = ()=>{
-    const { login } = useAuth();
+    const {login } = useAuth();
     const history = useHistory();
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [error, SetError] = useState('');
     const fnEmail = (ev)=>{setEmail(ev.target.value)}
     const fnPassword = (ev)=>{setPassword(ev.target.value)}
-    //console.log(currentUser);
+
+   
+   
+   
 
     const FnLogin = async(e) => {
         e.preventDefault();
        try{
+           
           await login(email, password);
           history.push('/note')
+           
        } 
        catch(error){
          SetError('Credencial invalida');
        }
     }
+
 
     return(
         <section>

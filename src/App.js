@@ -7,6 +7,7 @@ import Note from "./Component/Note";
 import PrivateRoute from "./Component/PrivateRoute";
 import MakeNote from "./Component/MakeNote";
 
+
 function App() {
 
   return (<div>

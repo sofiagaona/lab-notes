@@ -2,9 +2,10 @@ import { useHistory } from 'react-router';
 import React, {useState, useRef, useEffect} from 'react';
 import { useAuth } from '../Contextos/contexAuth.js';
 import _uniqueId from 'lodash/uniqueId';
-import { doc, updateDoc, setDoc} from "firebase/firestore";
+import { doc, setDoc} from "firebase/firestore";
 import { db } from "../Configuraciones/firebase";
-//import { getStorageValue } from '../Hook/useLocal Storage';
+import Note from './Note.jsx';
+import { getStorageValue } from '../Hook/useLocal Storage';
 
 
 
@@ -12,7 +13,7 @@ import { db } from "../Configuraciones/firebase";
 const FnSingUp = () => {
     const {currentUser, signup } = useAuth();
     const history = useHistory();
-    const [name, setName] = useState('');
+    const [name, setName] = useState(getStorageValue('name',''));
     const [email, setEmail]= useState('');
     const [password, setPassword]= useState('');
     const [verPassword, setverPassword]= useState('');
@@ -71,7 +72,8 @@ const FnSingUp = () => {
             <section className= 'box-form'>
                   <form className='form-singup' onSubmit={formSingup}>
                       <label>Nombre:</label>
-                      <input type='text' id ='input-name' value={name} required onChange={(ev)=>setName(ev.target.value)}></input>
+                      <input type='text' id ='input-name' value={name} required onChange={(ev)=>setName(ev.target.value)}>
+                      </input>
                       <label>Correo:</label>
                       <input type='email'id ='input-email' value={email} required onChange={(ev)=>setEmail(ev.target.value)}></input>
                       <label>Contraseña:</label>

@@ -16,9 +16,9 @@ const containerStyle = {
   };
 
 const GoogleMaps=()=>{
-    const [map, setMap] = useState(null)
+    //const [map, setMap] = useState(null)
  
-    const onLoad = useCallback(function callback(map) {
+    /*const onLoad = useCallback(function callback(map) {
       const bounds = new window.google.maps.LatLngBounds();
       map.fitBounds(bounds);
       setMap(map)
@@ -26,7 +26,7 @@ const GoogleMaps=()=>{
    
     const onUnmount = useCallback(function callback(map) {
       setMap(null)
-    }, [])
+    }, [])*/
    
     return (
       <LoadScript
@@ -38,8 +38,8 @@ const GoogleMaps=()=>{
           center={center}
           markers={markers}
           zoom={10}
-          onLoad={onLoad}
-          onUnmount={onUnmount}
+          //onLoad={onLoad}
+          //onUnmount={onUnmount}
         >
           
           <></>
