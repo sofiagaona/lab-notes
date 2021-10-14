@@ -1,6 +1,8 @@
 import React,{useState, useCallback} from "react";
 import { GoogleMap, LoadScript } from '@react-google-maps/api'; 
 
+
+
 const containerStyle = {
     width: '500px',
     height: '800px'
@@ -29,24 +31,27 @@ const GoogleMaps=()=>{
     }, [])*/
    
     return (
+      
       <LoadScript
         googleMapsApiKey="AIzaSyA-VGFltHlwjxklv4gzw6DB93tyamBdUZE"
       >
         <GoogleMap
+        
          googleMapsApiKey="AIzaSyA-VGFltHlwjxklv4gzw6DB93tyamBdUZE"
           mapContainerStyle={containerStyle}
           center={center}
           markers={markers}
-          zoom={10}
+          zoom={12}
           //onLoad={onLoad}
           //onUnmount={onUnmount}
         >
+         
           
           <></>
         </GoogleMap>
       </LoadScript>
     )
   }
-
+ 
 
 export default GoogleMaps
