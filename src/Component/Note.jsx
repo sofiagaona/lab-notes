@@ -28,7 +28,7 @@ const Note = (props) => {
         <div className="secc-header">
           <div className="logo">
             <div className="box-parrafo">
-              <p className="parrafo-note">Note&#39s</p>
+              <p className="parrafo-note">Note`s</p>
             </div>
             <div className="box-clcle-yellow-note">
               <div className="circle-yellow-note" />
