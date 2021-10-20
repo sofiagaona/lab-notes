@@ -1,14 +1,8 @@
-import React, {useState, useEffect} from "react";
-import _uniqueId from 'lodash/uniqueId';
-import { doc, updateDoc} from "firebase/firestore";
-import { db } from "../Configuraciones/firebase";
+import React from 'react';
 import DisplayNote from './DisplayNote';
 
-
-
-
-const MakeNote = (props)=>{
-   /* const [id] = useState(_uniqueId('prefix-89'));
+const MakeNote = (props) => (
+  /* const [id] = useState(_uniqueId('prefix-89'));
     console.log(props)
     const [newtitle, setNewTitle] = useState('');
     const [newnote, setNewNote] = useState('');
@@ -37,14 +31,10 @@ const MakeNote = (props)=>{
      }
      useEffect(()=>{
         upDateData()
-    },[])*/
-    
-    return (
-        <section>
-        
-        <DisplayNote id={props.id} collection='user'/> 
-        </section>
-    )
-}
+    },[]) */
 
-export default MakeNote
+  <section>
+    <DisplayNote id={props.id} collection="user" />
+  </section>
+);
+export default MakeNote;

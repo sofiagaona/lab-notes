@@ -1,0 +1,44 @@
+{
+    "env": {
+        "browser": true,
+        "es2021": true
+    },
+    "extends": [
+        "plugin:react/recommended",
+        "airbnb",
+        "plugin:jsx-a11y/recommended",
+        "plugin:react-hooks/recommended",
+        "prettier"
+    ],
+    "parserOptions": {
+        "ecmaFeatures": {
+            "jsx": true
+        },
+        "ecmaVersion": 12,
+        "sourceType": "module"
+    },
+    "plugins": [
+        "react",
+        "react-hooks",
+        "prettier"
+        
+    ],
+    "rules": {
+        "prettier/prettier":"error",
+        "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
+        "react/jsx-props-no-spreading": [1, {}],
+         "react/prop-types": [0, {  }],
+         "no-use-before-define": "off",
+         "no-shadow": "off",
+         "import/no-named-as-default":"off",
+         "react/destructuring-assignment": [0, "always", { "ignoreClassFields": true }],
+         "no-nested-ternary":"off",
+         "import/no-extraneous-dependencies": ["off", {"devDependencies": true, "optionalDependencies": true, "peerDependencies": true}],
+         " jsx-a11y / label-has-associated-control " : "off"
+         
+
+
+
+        
+    }
+}
