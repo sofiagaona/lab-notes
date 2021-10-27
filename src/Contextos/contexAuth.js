@@ -15,31 +15,13 @@ export const AuthProvider = (props) => {
   const [currentUser, setCurrentUser] = useState(
     GetStorageValue('currentUser', '')
   );
-  // const [user, setUser]= useState({});
+
   useEffect(() => {
     const auth = getAuth();
     onAuthStateChanged(auth, (user) => {
       setCurrentUser(user.uid);
     });
   }, []);
-  /* const auth = getAuth();
-      onAuthStateChanged(auth,(user) => {
-        setCurrentUser(user.uid);
-        
-      }) */
-
-  /* window.localStorage.setItem(
-     'currentUser', JSON.stringify(currentUser)
- )
- useEffect(()=>{
-     const loggedCurrentUser=window.localStorage.getItem('currentUser')
-     
-         const user = JSON.parse(loggedCurrentUser)
-         console.log(user);
-         setCurrentUser(user);
-         console.log(currentUser);
-     
- },[]) */
 
   useEffect(() => {
     localStorage.setItem('currentUser', JSON.stringify(currentUser));

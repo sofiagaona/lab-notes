@@ -5,11 +5,7 @@ import { useAuth } from '../Contextos/contexAuth';
 // Autenticación
 
 export const PrivateRoute = ({ component: Component, ...rest }) => {
-  const { user, currentUser } = useAuth();
-
-  if (Object.keys(currentUser).length === 0) {
-    console.log(`esta vacio${user}`);
-  }
+  const { currentUser } = useAuth();
 
   return (
     <Route {...rest}>

@@ -21,7 +21,7 @@ const DisplayNote = (props) => {
       });
       setNotes(document);
     });
-  }, []);
+  }, [collection, idUser]);
 
   const fnshowModal = () => {
     setIsvisible(true);
@@ -51,6 +51,7 @@ const DisplayNote = (props) => {
       <div>
         {notes.map((note) => (
           <CointeinerNot
+            key={note.toString()}
             note={note[2]}
             title={note[1]}
             id={note[0]}

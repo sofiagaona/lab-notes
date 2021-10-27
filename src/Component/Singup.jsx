@@ -1,5 +1,5 @@
 import { useHistory } from 'react-router';
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import _uniqueId from 'lodash/uniqueId';
 import { doc, setDoc } from 'firebase/firestore';
 import { useAuth } from '../Contextos/contexAuth';
@@ -14,8 +14,6 @@ const FnSingUp = () => {
   const [password, setPassword] = useState('');
   const [verPassword, setverPassword] = useState('');
   const [error, setError] = useState('');
-  const [setLoading] = useState(false);
-  const unmounted = useRef(false);
   const [id] = useState(_uniqueId('prefix-89'));
 
   useEffect(() => {
@@ -36,8 +34,6 @@ const FnSingUp = () => {
 
   const formSingup = async (e) => {
     e.preventDefault();
-    setLoading(true);
-
     if (password === verPassword) {
       try {
         const users = await signup(email, password);
@@ -49,10 +45,6 @@ const FnSingUp = () => {
       }
     } else {
       setError('Verifique que las  contraseña sean iguales');
-    }
-
-    if (!unmounted) {
-      setLoading(false);
     }
   };
 
@@ -110,7 +102,7 @@ const FnSingUp = () => {
           </label>
 
           <div className="box-btn-singup">
-            <button type="button" className="btn-Singup">
+            <button type="submit" className="btn-Singup" onSubmit={FnSingUp}>
               Registrarte
             </button>
           </div>

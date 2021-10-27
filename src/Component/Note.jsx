@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import { useAuth } from '../Contextos/contexAuth';
-import MakeNote from './MakeNote';
+// import MakeNote from './MakeNote';
 import GoogleMaps from './GoogleMaps';
+import DisplayNote from './DisplayNote';
 
-const Note = (props) => {
-  console.log(props.name);
+const Note = () => {
   const { currentUser, logout } = useAuth();
   const history = useHistory();
   const [error, SetError] = useState('');
@@ -75,7 +75,7 @@ const Note = (props) => {
         <div className="line-ver" />
         <div className="secc-Conteiner">
           {click === 1 ? (
-            <MakeNote id={currentUser} />
+            <DisplayNote id={currentUser} collection="user" />
           ) : click === 2 ? (
             <GoogleMaps />
           ) : click === 3 ? (

@@ -30,7 +30,6 @@ const ModalReact = ({
   const [idNote] = useState(_uniqueId('prefix-89'));
   const [newTitle, setNewtitle] = useState(GetStorageValue('newTitle', title));
   const [newNote, setNewnote] = useState(GetStorageValue('newNote', note));
-
   const [open, setOpen] = useState(isVisible);
   const heandleTitle = (ev) => {
     setNewtitle(ev.target.value);
