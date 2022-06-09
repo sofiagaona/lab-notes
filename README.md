@@ -1,6 +1,7 @@
 # Getting Started with Create React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Este proyect lo puede visitar en: https://stirring-tulumba-ce98e4.netlify.app actualmente su diseño esta adecuado para dispositivos tablet y monitores con resolución maxima de 974 * 1080 pixeles y minima de 628 * 1080 pixeles.
+
 
 ## Available Scripts
 
